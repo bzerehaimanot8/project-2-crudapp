@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # project-2-crudapp
 # Project Overview
 
@@ -109,3 +110,7 @@ function reverse(string) {
 #### SAMPLE.....
 **ERROR**: app.js:34 Uncaught SyntaxError: Unexpected identifier                                
 **RESOLUTION**: Missing comma after first object in sources {} object
+=======
+# project-2-frontend
+
+>>>>>>> af10873400b95e1ae72858a6e2e0d05102a6de6b
