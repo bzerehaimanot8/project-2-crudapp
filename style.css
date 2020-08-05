@@ -1,0 +1,31 @@
+.container {
+  text-align: center;
+  background-color: lightgray;
+  height: 800px;
+}
+
+.container li {
+  color: navy;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+  flex-direction: column;
+  
+}
+
+.form input{
+  margin: auto;
+  width: 150px;
+
+}
+
+.form button{
+  margin: auto;
+  width: 150px;
+  background-color: blue;
+color: white;
+
+}
