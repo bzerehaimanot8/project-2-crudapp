@@ -1,7 +1,8 @@
 .container {
   text-align: center;
   background-color: lightgray;
-  height: 800px;
+  height: 1000px;
+
 }
 
 .container li {
@@ -27,5 +28,16 @@
   width: 150px;
   background-color: blue;
 color: white;
+}
 
+#createselect {
+   margin: auto;
+  width: 150px;
+}
+
+.roster {
+margin: auto;
+background-color: white;
+height: 300px;
+width: 700px;
 }

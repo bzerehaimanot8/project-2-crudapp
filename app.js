@@ -1,13 +1,15 @@
+
+const deployedURL = "https://roster-generator.herokuapp.com/";
+const URL = deployedURL ? deployedURL : "http://localhost:3000";
+
 //Global Variables
-
-
-// const $nameInput = $("#createinput");
-// const $playerSelect = $("#createselect");
-// const $button = $("#createbutton");
-// const $nameEditInput = $("#editinput");
-// const $playerEditSelect = $("#editselect");
-// const $editButton = $("#editbutton");
-const $ul = $("ul");
+const $nameInput = $("#createinput");
+const $playerSelect = $("#createselect");
+const $button = $("#createbutton");
+const $nameEditInput = $("#editinput");
+const $playerEditSelect = $("#editselect");
+const $editButton = $("#editbutton");
+const $ul = $('ul');
 
 
 //Functions
@@ -18,17 +20,24 @@ const getBallPlayers = async () => {
   console.log(ballplayer)
   //populate selector w/ retrieved data
   ballplayer.forEach(player => {
-    $player = $('<li>').text(`Player Name: ${player.fullName} Position: ${player.position}`)
-    $ul.append($player)
+
+const $option = $('<option>').attr('value', player._id).text(player.fullName)
+      $playerSelect.append($option);
+
+
+
+
+    // $player = $('<li>').text(`Player Name: ${player.fullName} Position: ${player.position}`)
+    // $ul.append($player)
   })
 }
-getBallPlayers()
 
 
-const handleAdd = async (event) => {
+
+const addPlayers = async (event) => {
   //grab data from form
-  const fullname1 = $('[name = "fullname"]').val()
-  const position1 = $('[name = "position"]').val()
+  const fullName = $('[name = "fullName"]').val()
+  const position = $('[name = "position"]').val()
 
   //make a post request to create a player
   await fetch('/player', {
@@ -37,12 +46,11 @@ const handleAdd = async (event) => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      fullname1,
-      position1
+      fullName,
+      position
     })
-
   })
-
+  
   //get full list of players
   const response = await fetch('/player')
   const ballplayer = await response.json()
@@ -55,9 +63,10 @@ const handleAdd = async (event) => {
     $player = $('<li>').text(`Player Name: ${player.fullName} Position: ${player.position}`)
     $ul.append($player)
   })
+
 }
 
-$('button').on('click', handleAdd)
+$('button').on('click', addPlayers)
 
 
 
@@ -82,4 +91,4 @@ $('button').on('click', handleAdd)
 
 
 //Main App Logic
-// getBallPlayers()
+getBallPlayers()
