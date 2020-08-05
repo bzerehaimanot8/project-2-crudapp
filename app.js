@@ -1,4 +1,3 @@
-
 const deployedURL = "https://roster-generator.herokuapp.com/";
 const URL = deployedURL ? deployedURL : "http://localhost:3000";
 
@@ -21,8 +20,8 @@ const getBallPlayers = async () => {
   //populate selector w/ retrieved data
   ballplayer.forEach(player => {
 
-const $option = $('<option>').attr('value', player._id).text(player.fullName)
-      $playerSelect.append($option);
+    const $option = $('<option>').attr('value', player._id).text(player.fullName)
+    $playerSelect.append($option);
 
 
 
@@ -34,39 +33,48 @@ const $option = $('<option>').attr('value', player._id).text(player.fullName)
 
 
 
-const addPlayers = async (event) => {
+const createPlayer = async (event) => {
   //grab data from form
   const fullName = $('[name = "fullName"]').val()
   const position = $('[name = "position"]').val()
+  const height = $('[name = "height"]').val()
+  const yearsPro = $('[name = "yearsPro"]').val()
+  const from = $('[name = "from"]').val()
+  const imageURL = $('[name = "imageURL"]').val()
+  const championships = $('[name = "championships"]').val()
+  const allStarCount = $('[name = "allStarCount"]').val()
+  const ppg = $('[name = "ppg"]').val()
+  const apg = $('[name = "apg"]').val()
+  const rpg = $('[name = "rpg"]').val()
+  
 
   //make a post request to create a player
-  await fetch('/player', {
+  await fetch('http://localhost:3000/player', {
     method: 'post',
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      fullName,
-      position
+      fullName, position, height, yearsPro, from, imageURL, championships, allStarCount, ppg, apg, rpg
     })
   })
-  
+
   //get full list of players
-  const response = await fetch('/player')
+  const response = await fetch('http://localhost:3000/player')
   const ballplayer = await response.json()
 
   //empty the ul
   $ul.empty()
 
   //rebuild the ul
-  ballplayer.forEach(player => {
-    $player = $('<li>').text(`Player Name: ${player.fullName} Position: ${player.position}`)
+  // ballplayer.forEach(player => {
+    $player = $('<li>').text(`Player Name: ${player.fullName} Position: ${player.position} Height: ${player.height} Years in the NBA: ${player.yearsPro} College/High School: ${player.from} Image URL: ${player.imageURL} Championships: ${player.championships} All Star Seasons: ${player.allStarCount} PPG: ${player.ppg} APG: ${player.apg} RPG: ${player.rpg}`)
     $ul.append($player)
-  })
+  // })
 
 }
 
-$('button').on('click', addPlayers)
+$('button').on('click', createPlayer)
 
 
 
