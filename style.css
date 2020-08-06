@@ -1,7 +1,7 @@
 .container {
   text-align: center;
   background-color: lightgray;
-  height: 1000px;
+  height: 2000px;
 
 }
 
@@ -38,6 +38,6 @@ color: white;
 .roster {
 margin: auto;
 background-color: white;
-height: 300px;
+height: 700px;
 width: 700px;
 }
