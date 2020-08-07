@@ -12,6 +12,8 @@ const $editButton = $("#editbutton");
 const $ul = $('ul');
 const $li = $('<li>')
 
+const $editPositionInput = $("#editPositionInput")
+
 
 //Functions
 const selectPlayer = async () => {
@@ -49,6 +51,7 @@ $li.append($('<button>').text('delete').attr('id', player._id).on('click', delet
 //add an edit button for each rat
 $li.append($('<button>').text('edit').attr('id', player._id).on('click', (event)=> {
     $nameEditInput.val(player.fullName)
+    $editPositionInput.val(player.position)
     $playerEditSelect.val(player.position)
     $editButton.attr('id', player._id)
 }))
@@ -69,7 +72,7 @@ $ul.append($li)
 
 
 
-const createPlayer = async (event) => {
+const createPlayer = async () => {
   //grab data from form
   const fullName = $('[name = "fullName"]').val()
   const position = $('[name = "position"]').val()
@@ -131,7 +134,7 @@ const editPlayer = async (event) => {
 
 const updatedPlayer = {
 "fullName": $nameEditInput.val(),
-"position": $playerEditSelect.val()
+"position": $editPositionInput.val()
 
 }
 
