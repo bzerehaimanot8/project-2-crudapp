@@ -170,7 +170,7 @@ const URL = deployedURL ? deployedURL : "http://localhost:3000";
 //Global Variables
 const $nameInput = $("#createinput");
 const $playerSelect = $("#createselect");
-const $button = $("#createbutton");
+const $button = $("#createbutton1");
 const $nameEditInput = $("#editinput");
 const $playerEditSelect = $("#editselect");
 const $editButton = $("#editbutton");
