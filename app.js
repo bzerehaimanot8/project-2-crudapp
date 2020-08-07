@@ -1,4 +1,5 @@
-const deployedURL = "https://roster-generator.herokuapp.com/";
+// const deployedURL = "https://roster-generator.herokuapp.com/";
+const deployedURL = "http://localhost:3000";
 const URL = deployedURL ? deployedURL : "http://localhost:3000";
 
 //Global Variables
@@ -46,7 +47,7 @@ const $li = $('<li>').text(`Name: ${player.fullName} Position: ${player.position
 $li.append($('<button>').text('delete').attr('id', player._id).on('click', deletePlayer))
 
 //add an edit button for each rat
-$li.append($('<button>').text('edit').on('click', (event)=>{
+$li.append($('<button>').text('edit').attr('id', player._id).on('click', (event)=> {
     $nameEditInput.val(player.fullName)
     $playerEditSelect.val(player.position)
     $editButton.attr('id', player._id)
@@ -112,7 +113,6 @@ const createPlayer = async (event) => {
     
     
   })
-
 }
 //ballplayer.forEach(player
 
@@ -125,9 +125,30 @@ method: 'delete'
 
 $ul.empty()
 getPlayers()
+}
+
+const editPlayer = async (event) => {
+
+const updatedPlayer = {
+"fullName": $nameEditInput.val(),
+"position": $playerEditSelect.val()
 
 }
 
+  // const fullName = $('[name = "fullName"]').val()
+  // const position = $('[name = "position"]').val()
+
+const response = await fetch(`${URL}/player/${event.target.id}`, {
+    method: 'put',
+    headers: {
+  "Content-Type": "application/json"
+},
+body: JSON.stringify(updatedPlayer)
+
+})
+$ul.empty()
+getPlayers()
+}
 
 
 
@@ -144,3 +165,4 @@ getPlayers()
 selectPlayer()
 getPlayers()
 $('button').on('click', createPlayer)
+$editButton.on('click', editPlayer)
