@@ -164,7 +164,7 @@
 // // $('button).on('click', createPlayer)
 
 // const deployedURL = "https://roster-generator.herokuapp.com/";
-const deployedURL = "http://localhost:3000";
+const deployedURL = "https://roster-generator.herokuapp.com";
 const URL = deployedURL ? deployedURL : "http://localhost:3000";
 
 //Global Variables
