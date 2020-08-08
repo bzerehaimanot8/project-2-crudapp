@@ -164,7 +164,7 @@
 // // $('button).on('click', createPlayer)
 
 // const deployedURL = "https://roster-generator.herokuapp.com/";
-const deployedURL = "https://roster-generator.herokuapp.com";
+const deployedURL = "http://localhost:3000";
 const URL = deployedURL ? deployedURL : "http://localhost:3000";
 
 //Global Variables
@@ -177,6 +177,7 @@ const $editButton = $("#editbutton");
 const $ul = $('ul');
 const $li = $('<li>')
 const $editPositionInput = $("#editPositionInput")
+// const $button1 = $('button')
 
 
 //Functions
@@ -251,7 +252,16 @@ const createPlayer = async () => {
     },
     body: JSON.stringify({
       fullName,
-      position, height, yearsPro, from, imageURL, championships, allStarCount, ppg, apg, rpg
+      position,
+      height,
+      yearsPro,
+      from,
+      imageURL,
+      championships,
+      allStarCount,
+      ppg,
+      apg,
+      rpg
     })
   })
   getPlayers()
@@ -283,6 +293,7 @@ const deletePlayer = async (event) => {
   })
   $ul.empty()
   getPlayers()
+
 }
 
 
