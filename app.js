@@ -164,7 +164,7 @@
 // // $('button).on('click', createPlayer)
 
 // const deployedURL = "https://roster-generator.herokuapp.com/";
-const deployedURL = "http://localhost:3000";
+const deployedURL = "https://roster-generator.herokuapp.com";
 const URL = deployedURL ? deployedURL : "http://localhost:3000";
 
 //Global Variables
@@ -183,9 +183,8 @@ const $editPositionInput = $("#editPositionInput")
 //Functions
 const selectPlayer = async () => {
   //api call using asnyc/await
-  const response = await fetch('http://localhost:3000/player')
+  const response = await fetch(`${URL}/player`)
   const data = await response.json()
-  console.log(data)
   //populate selector w/ retrieved data
   data.forEach(player => {
 
@@ -201,7 +200,7 @@ const selectPlayer = async () => {
 //GET ALL PLAYERS
 const getPlayers = async () => {
   //grabs player info and stores it
-  const response = await fetch('http://localhost:3000/player')
+  const response = await fetch(`${URL}/player`)
   //transforms this data and stores it
   const data = await response.json()
   console.log(data)
@@ -245,7 +244,7 @@ const createPlayer = async () => {
   const rpg = $('[name = "rpg"]').val()
 
   //make a post request to create a player
-  await fetch('http://localhost:3000/player', {
+  await fetch(`${URL}/player`, {
     method: 'post',
     headers: {
       "Content-Type": "application/json"
